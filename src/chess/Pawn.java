@@ -25,17 +25,20 @@ public class Pawn extends Piece {
     int xdelta,int ydelta){
         g.setColor(color); 
         
-        if (!royalPawn){
+//        if (!royalPawn){
+//            g.setColor(Color.blue);
+//            g.setFont(new Font("Arial",Font.PLAIN,30));
+//            g.drawString("Pawn",Window.getX(column*xdelta)+15,
+//            Window.getY(row*ydelta)+50);       
+//        }
+//        else{
+            if (whiteTeam)
             g.setColor(Color.blue);
+        else
+            g.setColor(Color.red);
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Pawn",Window.getX(column*xdelta)+15,
             Window.getY(row*ydelta)+50);       
         }
-        else{
-            g.setColor(Color.blue);
-            g.setFont(new Font("Arial",Font.PLAIN,30));
-            g.drawString("Pawn",Window.getX(column*xdelta)+15,
-            Window.getY(row*ydelta)+50);       
-        }
-    }
+    
 }
