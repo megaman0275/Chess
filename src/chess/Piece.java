@@ -21,9 +21,9 @@ abstract public class Piece {
         captured = false;
         whiteTeam = _whiteTeam;
     }
-//    public  getXpos(){
-//        
-//    }
+    public void setWhiteTeam(boolean _whiteTeam){
+        whiteTeam = _whiteTeam;
+    }
     
     abstract protected void Move();    
     
