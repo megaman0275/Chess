@@ -34,17 +34,23 @@ public class Board {
     static Piece kingW = new King();     
     static Piece kingB = new King();
     
-    static Piece QueenW = new Queen();
-    static Piece QueenB = new Queen();
+    static Piece queenW = new Queen();
+    static Piece queenB = new Queen();
     
-    static Piece RookW = new Rook();
-    static Piece RookB = new Rook();
+    static Piece rook1W = new Rook();
+    static Piece rook1B = new Rook();
+    static Piece rook2W = new King();     
+    static Piece rook2B = new King();
     
-    static Piece KnightW = new Knight();
-    static Piece KnightB = new Knight();
+    static Piece knight1W = new Knight();
+    static Piece knight1B = new Knight();
+    static Piece knight2W = new King();     
+    static Piece knight2B = new King();
     
-    static Piece BishopW = new Bishop();
-    static Piece BishopB = new Bishop();
+    static Piece bishop1W = new Bishop();
+    static Piece bishop1B = new Bishop();
+    static Piece bishop2W = new King();     
+    static Piece bishop2B = new King();
     
     private static Player winner = null;
     private static Color boardColor = Color.white;
@@ -69,21 +75,72 @@ public class Board {
         int ydelta = Window.getHeight2()/NUM_ROWS;
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
         board[1][0] = pawn1W;
+        pawn1W.setWhiteTeam(true);
         board[1][1] = pawn2W;
+        pawn2W.setWhiteTeam(true);
         board[1][2] = pawn3W;
+        pawn3W.setWhiteTeam(true);
         board[1][3] = pawn4W;
+        pawn4W.setWhiteTeam(true);
         board[1][4] = pawn5W;
+        pawn5W.setWhiteTeam(true);
         board[1][5] = pawn6W;
+        pawn6W.setWhiteTeam(true);
         board[1][6] = pawn7W;
+        pawn7W.setWhiteTeam(true);
         board[1][7] = pawn8W;
+        pawn8W.setWhiteTeam(true);
+        
         board[6][0] = pawn1B;
+        pawn1B.setWhiteTeam(false);
         board[6][1] = pawn2B;
+        pawn2B.setWhiteTeam(false);
         board[6][2] = pawn3B;
+        pawn3B.setWhiteTeam(false);
         board[6][3] = pawn4B;
+        pawn4B.setWhiteTeam(false);
         board[6][4] = pawn5B;
+        pawn5B.setWhiteTeam(false);
         board[6][5] = pawn6B;
+        pawn6B.setWhiteTeam(false);
         board[6][6] = pawn7B;
+        pawn7B.setWhiteTeam(false);
         board[6][7] = pawn8B;
+        pawn8B.setWhiteTeam(false);
+        
+        board[0][0] = rook1W;
+        rook1W.setWhiteTeam(true);
+        board[0][1] = knight1W;
+        knight1W.setWhiteTeam(true);
+        board[0][2] = bishop1W;
+        bishop1W.setWhiteTeam(true);
+        board[0][3] = kingW;
+        kingW.setWhiteTeam(true);
+        board[0][4] = queenW;
+        queenW.setWhiteTeam(true);
+        board[0][5] = bishop2W;
+        bishop2W.setWhiteTeam(true);
+        board[0][6] = knight2W;
+        knight2W.setWhiteTeam(true);
+        board[0][7] = rook2W;
+        rook2W.setWhiteTeam(true);
+       
+        board[7][0] = rook1B;
+        rook1B.setWhiteTeam(false);
+        board[7][1] = knight1B;
+        knight1B.setWhiteTeam(false);
+        board[7][2] = bishop1B;
+        bishop1B.setWhiteTeam(false);
+        board[7][3] = kingB;
+        kingB.setWhiteTeam(false);
+        board[7][4] = queenB;
+        queenB.setWhiteTeam(false);
+        board[7][5] = bishop2B;
+        bishop2B.setWhiteTeam(false);
+        board[7][6] = knight2B;
+        knight2B.setWhiteTeam(false);
+        board[7][7] = rook2B;
+        rook2B.setWhiteTeam(false);
         
         
  //draw grid
