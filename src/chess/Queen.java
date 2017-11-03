@@ -24,9 +24,12 @@ public class Queen extends Piece {
     int xdelta,int ydelta){
         g.setColor(color); 
         
-        g.setColor(Color.blue);
+       if (whiteTeam)
+            g.setColor(Color.blue);
+        else
+            g.setColor(Color.red);
         g.setFont(new Font("Arial",Font.PLAIN,30));
-        g.drawString("King",Window.getX(column*xdelta)+15,
+        g.drawString("Queen",Window.getX(column*xdelta)+15,
         Window.getY(row*ydelta)+50);       
     }
 }
