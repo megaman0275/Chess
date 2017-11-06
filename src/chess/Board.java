@@ -7,7 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 
-//sdhfpaisufghpqiwureghqiuefhpiqufhpqwiuefghpqwijefhpqiwuefh
+
 public class Board {
     public final static int NUM_ROWS = 8;
     public final static int NUM_COLUMNS = 8;      
