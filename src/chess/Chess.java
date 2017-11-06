@@ -31,9 +31,7 @@ public class Chess extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
 
                 if (e.BUTTON1 == e.getButton() ) {
-                    
-                    
-                   
+                    Board.mouseSelectedPiece(e.getX(), e.getY());
                 }
 
                 if (e.BUTTON3 == e.getButton()) {

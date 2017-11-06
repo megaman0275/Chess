@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Pawn.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Window.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Chess.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Knight.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Board.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/King.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Queen.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Player.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Piece.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Bishop.java</file>
-            <file>file:/C:/Users/373001308/Desktop/CS2/Chess/src/chess/Rook.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Pawn.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Piece.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Bishop.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Board.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Rook.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Knight.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Chess.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/King.java</file>
+            <file>file:/Users/briansanchez/Desktop/og/Chess/src/chess/Queen.java</file>
         </group>
     </open-files>
 </project-private>

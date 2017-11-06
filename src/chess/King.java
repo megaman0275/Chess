@@ -18,8 +18,9 @@ public class King extends Piece {
        
     }
     
-    public void Move(){
-        
+    public void move(int x, int y){
+        xpos = x;
+        ypos = y;
     }
     public void Draw(Graphics2D g,int row,int column,
     int xdelta,int ydelta){
@@ -30,8 +31,8 @@ public class King extends Piece {
         else
             g.setColor(Color.red);
         g.setFont(new Font("Arial",Font.PLAIN,30));
-        g.drawString("King",Window.getX(column*xdelta)+15,
-            Window.getY(row*ydelta)+50);       
+        g.drawString("King",Window.getX(xpos*xdelta)+15,
+            Window.getY(ypos*ydelta)+50);       
     }
 }
 

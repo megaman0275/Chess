@@ -25,7 +25,7 @@ abstract public class Piece {
         whiteTeam = _whiteTeam;
     }
     
-    abstract protected void Move();    
+    abstract protected void move(int x, int y);    
     
     abstract protected void Draw(Graphics2D g,int row,int column,
     int xdelta,int ydelta);

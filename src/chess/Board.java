@@ -11,46 +11,47 @@ import java.awt.Graphics2D;
 public class Board {
     public final static int NUM_ROWS = 8;
     public final static int NUM_COLUMNS = 8;      
-    public static Piece board[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
+    public static Piece board[][] = new Piece[NUM_COLUMNS][NUM_ROWS];
+    public static Piece selectedPiece;
 
-    static Piece pawn1W = new Pawn();
-    static Piece pawn2W = new Pawn();
-    static Piece pawn3W = new Pawn();
-    static Piece pawn4W = new Pawn();
-    static Piece pawn5W = new Pawn();
-    static Piece pawn6W = new Pawn();
-    static Piece pawn7W = new Pawn();
-    static Piece pawn8W = new Pawn();
+    static Piece pawn1W = new Pawn(0,6,true);
+    static Piece pawn2W = new Pawn(1,6,true);
+    static Piece pawn3W = new Pawn(2,6,true);
+    static Piece pawn4W = new Pawn(3,6,true);
+    static Piece pawn5W = new Pawn(4,6,true);
+    static Piece pawn6W = new Pawn(5,6,true);
+    static Piece pawn7W = new Pawn(6,6,true);
+    static Piece pawn8W = new Pawn(7,6,true);
     
-    static Piece pawn1B = new Pawn();
-    static Piece pawn2B = new Pawn();
-    static Piece pawn3B = new Pawn();
-    static Piece pawn4B = new Pawn();
-    static Piece pawn5B = new Pawn();
-    static Piece pawn6B = new Pawn();
-    static Piece pawn7B = new Pawn();
-    static Piece pawn8B = new Pawn();
+    static Piece pawn1B = new Pawn(0,1,false);
+    static Piece pawn2B = new Pawn(1,1,false);
+    static Piece pawn3B = new Pawn(2,1,false);
+    static Piece pawn4B = new Pawn(3,1,false);
+    static Piece pawn5B = new Pawn(4,1,false);
+    static Piece pawn6B = new Pawn(5,1,false);
+    static Piece pawn7B = new Pawn(6,1,false);
+    static Piece pawn8B = new Pawn(7,1,false);
     
-    static Piece kingW = new King();     
-    static Piece kingB = new King();
+    static Piece kingW = new King(4,7,true);     
+    static Piece kingB = new King(3,0,false);
     
-    static Piece queenW = new Queen();
-    static Piece queenB = new Queen();
+    static Piece queenW = new Queen(3,7,true);
+    static Piece queenB = new Queen(4,0,false);
     
-    static Piece rook1W = new Rook();
-    static Piece rook1B = new Rook();
-    static Piece rook2W = new King();     
-    static Piece rook2B = new King();
+    static Piece rook1W = new Rook(0,7,true);
+    static Piece rook2W = new Rook(7,7,true);
+    static Piece rook1B = new Rook(0,0,false);    
+    static Piece rook2B = new Rook(7,0,false);
     
-    static Piece knight1W = new Knight();
-    static Piece knight1B = new Knight();
-    static Piece knight2W = new King();     
-    static Piece knight2B = new King();
+    static Piece knight1W = new Knight(1,7,true);
+    static Piece knight1B = new Knight(6,7,true);
+    static Piece knight2W = new Knight(1,0,false);     
+    static Piece knight2B = new Knight(6,0,false);
     
-    static Piece bishop1W = new Bishop();
-    static Piece bishop1B = new Bishop();
-    static Piece bishop2W = new King();     
-    static Piece bishop2B = new King();
+    static Piece bishop1W = new Bishop(2,7,true);
+    static Piece bishop1B = new Bishop(5,7,true);
+    static Piece bishop2W = new Bishop(2,0,false);     
+    static Piece bishop2B = new Bishop(5,0,false);
     
     private static Player winner = null;
     private static Color boardColor = Color.white;
@@ -74,73 +75,41 @@ public class Board {
 //Calculate the width and height of each board square.
         int ydelta = Window.getHeight2()/NUM_ROWS;
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
-        board[1][0] = pawn1W;
-        pawn1W.setWhiteTeam(true);
-        board[1][1] = pawn2W;
-        pawn2W.setWhiteTeam(true);
-        board[1][2] = pawn3W;
-        pawn3W.setWhiteTeam(true);
-        board[1][3] = pawn4W;
-        pawn4W.setWhiteTeam(true);
-        board[1][4] = pawn5W;
-        pawn5W.setWhiteTeam(true);
-        board[1][5] = pawn6W;
-        pawn6W.setWhiteTeam(true);
-        board[1][6] = pawn7W;
-        pawn7W.setWhiteTeam(true);
-        board[1][7] = pawn8W;
-        pawn8W.setWhiteTeam(true);
+        board[pawn1W.xpos][pawn1W.ypos] = pawn1W;
+        board[pawn2W.xpos][pawn2W.ypos] = pawn2W;
+        board[pawn3W.xpos][pawn3W.ypos] = pawn3W;
+        board[pawn4W.xpos][pawn4W.ypos] = pawn4W;
+        board[pawn5W.xpos][pawn5W.ypos] = pawn5W;
+        board[pawn6W.xpos][pawn6W.ypos] = pawn6W;
+        board[pawn7W.xpos][pawn7W.ypos] = pawn7W;
+        board[pawn8W.xpos][pawn8W.ypos] = pawn8W;
         
-        board[6][0] = pawn1B;
-        pawn1B.setWhiteTeam(false);
-        board[6][1] = pawn2B;
-        pawn2B.setWhiteTeam(false);
-        board[6][2] = pawn3B;
-        pawn3B.setWhiteTeam(false);
-        board[6][3] = pawn4B;
-        pawn4B.setWhiteTeam(false);
-        board[6][4] = pawn5B;
-        pawn5B.setWhiteTeam(false);
-        board[6][5] = pawn6B;
-        pawn6B.setWhiteTeam(false);
-        board[6][6] = pawn7B;
-        pawn7B.setWhiteTeam(false);
-        board[6][7] = pawn8B;
-        pawn8B.setWhiteTeam(false);
+        board[pawn1B.xpos][pawn1B.ypos] = pawn1B;
+        board[pawn2B.xpos][pawn2B.ypos] = pawn2B;
+        board[pawn3B.xpos][pawn3B.ypos] = pawn3B;
+        board[pawn4B.xpos][pawn4B.ypos] = pawn4B;
+        board[pawn5B.xpos][pawn5B.ypos] = pawn5B;
+        board[pawn6B.xpos][pawn6B.ypos] = pawn6B;
+        board[pawn7B.xpos][pawn7B.ypos] = pawn7B;
+        board[pawn8B.xpos][pawn8B.ypos] = pawn8B;
         
-        board[0][0] = rook1W;
-        rook1W.setWhiteTeam(true);
-        board[0][1] = knight1W;
-        knight1W.setWhiteTeam(true);
-        board[0][2] = bishop1W;
-        bishop1W.setWhiteTeam(true);
-        board[0][3] = kingW;
-        kingW.setWhiteTeam(true);
-        board[0][4] = queenW;
-        queenW.setWhiteTeam(true);
-        board[0][5] = bishop2W;
-        bishop2W.setWhiteTeam(true);
-        board[0][6] = knight2W;
-        knight2W.setWhiteTeam(true);
-        board[0][7] = rook2W;
-        rook2W.setWhiteTeam(true);
+        board[rook1W.xpos][rook1W.ypos] = rook1W;
+        board[knight1W.xpos][knight1W.ypos] = knight1W;
+        board[bishop1W.xpos][bishop1W.ypos] = bishop1W;
+        board[kingW.xpos][kingW.ypos] = kingW;
+        board[queenW.xpos][queenW.ypos] = queenW;
+        board[bishop2W.xpos][bishop2W.ypos] = bishop2W;
+        board[knight2W.xpos][knight2W.ypos] = knight2W;
+        board[rook2W.xpos][rook2W.ypos] = rook2W;
        
-        board[7][0] = rook1B;
-        rook1B.setWhiteTeam(false);
-        board[7][1] = knight1B;
-        knight1B.setWhiteTeam(false);
-        board[7][2] = bishop1B;
-        bishop1B.setWhiteTeam(false);
-        board[7][3] = kingB;
-        kingB.setWhiteTeam(false);
-        board[7][4] = queenB;
-        queenB.setWhiteTeam(false);
-        board[7][5] = bishop2B;
-        bishop2B.setWhiteTeam(false);
-        board[7][6] = knight2B;
-        knight2B.setWhiteTeam(false);
-        board[7][7] = rook2B;
-        rook2B.setWhiteTeam(false);
+        board[rook1B.xpos][rook1B.ypos] = rook1B;
+        board[knight1B.xpos][knight1B.ypos] = knight1B;
+        board[bishop1B.xpos][bishop1B.ypos] = bishop1B;
+        board[kingB.xpos][kingB.ypos] = kingB;
+        board[queenB.xpos][queenB.ypos] = queenB;
+        board[bishop2B.xpos][bishop2B.ypos] = bishop2B;
+        board[knight2B.xpos][knight2B.ypos] = knight2B;
+        board[rook2B.xpos][rook2B.ypos] = rook2B;
         
         
  //draw grid
@@ -171,6 +140,17 @@ public class Board {
                 ChangeBoardColor();
             }
         }
+
+//Hilighting selected Piece
+        if(selectedPiece != null){
+            g.setColor(Color.green);
+                g.fillRect(Window.getX(0)+selectedPiece.xpos*Window.getWidth2()/NUM_COLUMNS,
+                Window.getY(0)+selectedPiece.ypos*Window.getHeight2()/NUM_ROWS,
+                Window.getWidth2()/NUM_COLUMNS,
+                Window.getHeight2()/NUM_ROWS);
+                System.out.println("Drawn");
+        }
+// Drawing all the Pieces        
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
         {
             for (int zcolumn=0;zcolumn<NUM_COLUMNS;zcolumn++)
@@ -202,6 +182,53 @@ public class Board {
         
         
     }
+    
+    public static void mouseSelectedPiece(int x, int y){
+        int xdelta = Window.getWidth2()/NUM_COLUMNS;
+        int ydelta = Window.getHeight2()/NUM_ROWS;
+        x -= Window.getX(0);
+        y -= Window.getY(0);
+        int zcol = convertXPixelToINT(x,xdelta);
+        int zrow = convertYPixelToINT(y,ydelta);
+
+        
+        if(zrow > -1 && zcol > -1 && zrow < NUM_ROWS && zcol < NUM_COLUMNS){
+            
+            if(selectedPiece == board[zcol][zrow]){
+                selectedPiece = null;
+            }else if(board[zcol][zrow] != null){
+                selectedPiece = board[zcol][zrow];
+            }else if(board[zcol][zrow] == null){
+                board[selectedPiece.xpos][selectedPiece.ypos] = null;
+                selectedPiece.move(zcol, zrow);
+                board[zcol][zrow] = selectedPiece;
+                selectedPiece = null;
+            }
+        }
+        
+    }
+    
+    public static int convertXPixelToINT(int x, int xdelta){
+        int intX = 0;
+        for(int i=0;i<NUM_COLUMNS;i++){
+            if(xdelta * i < x && x < xdelta*(i+1)){
+                intX = i;
+            }
+        }
+        return intX;
+    }
+    
+    public static int convertYPixelToINT(int y, int ydelta){
+        int intY = 0;
+        for(int i=0;i<NUM_ROWS;i++){
+            if(ydelta * i < y && y < ydelta * (i+1) ){
+                intY = i;
+            }
+        }
+        return intY;
+    }
+    
+ 
     
     public static void ChangeBoardColor(){
             if(boardColor == Color.white)
