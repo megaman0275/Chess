@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 public class Pawn extends Piece {
     boolean royalPawn;
-    private Color color;
 
     Pawn(){
         super();

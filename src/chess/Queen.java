@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 
 public class Queen extends Piece {
-    private Color color;
 
     Queen(){
         super();

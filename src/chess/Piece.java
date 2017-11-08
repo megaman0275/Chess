@@ -1,6 +1,7 @@
 
 package chess;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 abstract public class Piece {
@@ -8,6 +9,7 @@ abstract public class Piece {
     protected int ypos;
     protected boolean captured;
     protected boolean whiteTeam;
+    protected Color color;
    
     Piece(){
         xpos = 0;
@@ -20,9 +22,17 @@ abstract public class Piece {
         ypos = _ypos;
         captured = false;
         whiteTeam = _whiteTeam;
+        if(whiteTeam)
+            color = Color.blue;
+        else 
+            color = Color.red;
     }
+    
     public void setWhiteTeam(boolean _whiteTeam){
         whiteTeam = _whiteTeam;
+    }
+    public Color getColor(){
+        return color;
     }
     
     abstract protected void move(int x, int y);    

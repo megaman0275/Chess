@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 
 
 public class Bishop extends Piece {
-    private Color color;
 
     Bishop(){
         super();

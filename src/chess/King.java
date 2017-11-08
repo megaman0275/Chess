@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 
 public class King extends Piece {
-    private Color color;
 
     King(){
         super();

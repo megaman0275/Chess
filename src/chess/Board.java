@@ -13,6 +13,7 @@ public class Board {
     public final static int NUM_COLUMNS = 8;      
     public static Piece board[][] = new Piece[NUM_COLUMNS][NUM_ROWS];
     public static Piece selectedPiece;
+    public static boolean whitePlayerTurn = true;
 
     static Piece pawn1W = new Pawn(0,6,true);
     static Piece pawn2W = new Pawn(1,6,true);
@@ -148,7 +149,6 @@ public class Board {
                 Window.getY(0)+selectedPiece.ypos*Window.getHeight2()/NUM_ROWS,
                 Window.getWidth2()/NUM_COLUMNS,
                 Window.getHeight2()/NUM_ROWS);
-                System.out.println("Drawn");
         }
 // Drawing all the Pieces        
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
@@ -184,28 +184,43 @@ public class Board {
     }
     
     public static void mouseSelectedPiece(int x, int y){
-        int xdelta = Window.getWidth2()/NUM_COLUMNS;
-        int ydelta = Window.getHeight2()/NUM_ROWS;
-        x -= Window.getX(0);
-        y -= Window.getY(0);
-        int zcol = convertXPixelToINT(x,xdelta);
-        int zrow = convertYPixelToINT(y,ydelta);
+        int zcol = convertXPixelToINT(x - Window.getX(0),Window.getWidth2()/NUM_COLUMNS);
+        int zrow = convertYPixelToINT(y- Window.getY(0),Window.getHeight2()/NUM_ROWS);
 
         
         if(zrow > -1 && zcol > -1 && zrow < NUM_ROWS && zcol < NUM_COLUMNS){
             
-            if(selectedPiece == board[zcol][zrow]){
-                selectedPiece = null;
+
+            
+            if(board[zcol][zrow] == null){
+                if(selectedPiece == null){
+                }else if(selectedPiece != null){
+                    movePiece(zcol,zrow);
+                }
             }else if(board[zcol][zrow] != null){
-                selectedPiece = board[zcol][zrow];
-            }else if(board[zcol][zrow] == null){
-                board[selectedPiece.xpos][selectedPiece.ypos] = null;
-                selectedPiece.move(zcol, zrow);
-                board[zcol][zrow] = selectedPiece;
-                selectedPiece = null;
+                if(selectedPiece == null && ((whitePlayerTurn && board[zcol][zrow].getColor() == Color.blue)||
+                (!whitePlayerTurn &&board[zcol][zrow].getColor() == Color.red))){
+                    selectedPiece = board[zcol][zrow];
+                }else if(board[zcol][zrow].getColor() == selectedPiece.getColor()){
+                    selectedPiece = board[zcol][zrow];
+                }else if(board[zcol][zrow] == selectedPiece){
+                    selectedPiece = null;
+                }else if(board[zcol][zrow].getColor() != selectedPiece.getColor()){
+                    movePiece(zcol, zrow);
+                }
             }
+            
+            
         }
         
+    }
+    
+    public static void movePiece(int zcol, int zrow){
+        board[selectedPiece.xpos][selectedPiece.ypos] = null;
+        selectedPiece.move(zcol, zrow);
+        board[zcol][zrow] = selectedPiece;
+        selectedPiece = null;
+        whitePlayerTurn = !whitePlayerTurn;
     }
     
     public static int convertXPixelToINT(int x, int xdelta){

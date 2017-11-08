@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 
 public class Rook  extends Piece{
-    private Color color;
 
     Rook(){
         super();

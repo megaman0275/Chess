@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 
 public class Knight extends Piece {
-    private Color color;
 
     Knight(){
         super();
