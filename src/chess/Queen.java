@@ -16,6 +16,9 @@ public class Queen extends Piece {
        super(_xpos,_ypos, _whiteTeam);
        
     }
+    
+    public void hilightGoodSpots(){     
+    }
     public void move(int x, int y){
         xpos = x;
         ypos = y;

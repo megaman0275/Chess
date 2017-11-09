@@ -3,10 +3,12 @@ package chess;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 
 public class Pawn extends Piece {
     boolean royalPawn;
+    private ArrayList<Piece[][]> goodSpots = new ArrayList<Piece[][]>();
 
     Pawn(){
         super();
@@ -17,6 +19,9 @@ public class Pawn extends Piece {
        royalPawn = false;
     }
 
+    public void hilightGoodSpots(){
+        //for()
+    }
 // Glitch: clibking right inbetween two squares    
     public void move(int x, int y){
         xpos = x;

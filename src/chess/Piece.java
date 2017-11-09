@@ -34,6 +34,23 @@ abstract public class Piece {
     public Color getColor(){
         return color;
     }
+    public void capturePiece(){
+        captured = true;
+        Board.board[xpos][ypos] = null;
+        System.out.println("Piece Captured");
+    }
+    
+    public boolean isCaptured(){
+        return captured;
+    }
+    public int getXPos(){
+        return xpos;
+    }
+    public int getYPos(){
+        return ypos;
+    }
+    
+    abstract protected void hilightGoodSpots();
     
     abstract protected void move(int x, int y);    
     

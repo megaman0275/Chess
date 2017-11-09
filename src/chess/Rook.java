@@ -17,6 +17,8 @@ public class Rook  extends Piece{
        
     }
     
+    public void hilightGoodSpots(){     
+    }
     public void move(int x, int y){
         xpos = x;
         ypos = y;
