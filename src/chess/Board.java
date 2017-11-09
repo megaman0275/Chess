@@ -178,14 +178,16 @@ public class Board {
             g.setFont(new Font("Arial",Font.PLAIN,30));
             g.drawString("Player 2 has Won", 200,70);              
         }
-        else {
+        else  {
             g.setColor(Player.getCurrentPlayer().getColor());
             g.setFont(new Font("Arial",Font.PLAIN,30));
-            if (Player.getCurrentPlayer() == Player.getPlayer1())
-                g.drawString("Player 1's turn", 350,70);              
+            if(whitePlayerTurn)
+                g.drawString("Player 1's turn", 350,70);  
+            
             else
-                g.drawString("Player 2's turn", 3500,70);              
+                g.drawString("Player 2's turn", 350,70);     
         }
+        
         
         
     }
