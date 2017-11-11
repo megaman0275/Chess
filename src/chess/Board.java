@@ -121,18 +121,7 @@ public class Board {
         }
         
  //draw grid
-        g.setColor(Color.black);
-        for (int zi = 1;zi<NUM_ROWS;zi++)
-        {
-            g.drawLine(Window.getX(0),Window.getY(zi*ydelta),
-                    Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
-        }
-        
-        for (int zi = 1;zi<NUM_COLUMNS;zi++)
-        {
-            g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
-                    Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
-        }
+
                 
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
         {

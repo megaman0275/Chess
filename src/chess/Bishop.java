@@ -31,41 +31,41 @@ public class Bishop extends Piece {
     int xdelta,int ydelta,Chess main){
         
         if(player == Player.Player1)
-            drawWhiteKingImage(g,Window.getX(xpos*xdelta)+15,
+            drawWhiteBishopImage(g,Window.getX(xpos*xdelta)+15,
             Window.getY(ypos*ydelta)+50,
             0,1.1,1.1,main);
         else
-            drawBlackKingImage(g,Window.getX(xpos*xdelta)+15,
+            drawBlackBishopImage(g,Window.getX(xpos*xdelta)+15,
             Window.getY(ypos*ydelta)+50,
             0,1.1,1.1,main);
     }
     
 //====================  Draw White Piece  ====================================//
-    private void drawWhiteKingImage(Graphics2D g,int xpos,int ypos,
+    private void drawWhiteBishopImage(Graphics2D g,int xpos,int ypos,
     double rot,double xscale,double yscale,Chess main)
     {
         g.translate(xpos,ypos);
         g.scale( xscale , yscale );
 
-        int width = main.whiteKingImage.getWidth(main);
-        int height = main.whiteKingImage.getHeight(main);
+        int width = main.whiteBishopImage.getWidth(main);
+        int height = main.whiteBishopImage.getHeight(main);
          
-        g.drawImage(main.whiteKingImage,0,-height/2,width,height,main);        
+        g.drawImage(main.whiteBishopImage,0,-height/2,width,height,main);        
      
         g.scale( 1.0/xscale,1.0/yscale );
         g.translate(-xpos,-ypos);
     }
 //====================  Draw Black Piece  ====================================//
-    private void drawBlackKingImage(Graphics2D g,int xpos,int ypos,
+    private void drawBlackBishopImage(Graphics2D g,int xpos,int ypos,
     double rot,double xscale,double yscale,Chess main)
     {
         g.translate(xpos,ypos);
         g.scale( xscale , yscale );
 
-        int width = main.blackKingImage.getWidth(main);
-        int height = main.blackKingImage.getHeight(main);
+        int width = main.blackBishopImage.getWidth(main);
+        int height = main.blackBishopImage.getHeight(main);
          
-        g.drawImage(main.blackKingImage,0,-height/2,width,height,main);        
+        g.drawImage(main.blackBishopImage,0,-height/2,width,height,main);        
      
         g.scale( 1.0/xscale,1.0/yscale );
         g.translate(-xpos,-ypos);
