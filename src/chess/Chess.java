@@ -12,6 +12,24 @@ public class Chess extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
+    
+    Image whiteKingImage;
+    Image blackKingImage;
+    
+    Image whiteQueenImage;
+    Image blackQueenImage;
+    
+    Image whiteBishopImage;
+    Image blackBishopImage;
+    
+    Image whiteKnightImage;
+    Image blackKnightImage;
+    
+    Image whiteRookImage;
+    Image blackRookImage;
+    
+    Image whitePawnImage;
+    Image blackPawnImage;
 
 //    int numPieces = 16;
 //    private ArrayList<Piece> piece = 
@@ -114,7 +132,7 @@ public class Chess extends JFrame implements Runnable {
         
        
         
-        Board.Draw(g);
+        Board.Draw(g,this);
         
 
         gOld.drawImage(image, 0, 0, null);
@@ -150,6 +168,24 @@ public class Chess extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
+            
+            whiteKingImage = Toolkit.getDefaultToolkit().getImage("./White_King.GIF");
+            blackKingImage = Toolkit.getDefaultToolkit().getImage("./Black_King.GIF");
+            
+            whiteQueenImage = Toolkit.getDefaultToolkit().getImage("./White_Queen.GIF");
+            blackQueenImage = Toolkit.getDefaultToolkit().getImage("./Black_Queen.GIF");
+            
+            whiteBishopImage = Toolkit.getDefaultToolkit().getImage("./White_Bishop.GIF");
+            blackBishopImage = Toolkit.getDefaultToolkit().getImage("./Black_Bishop.GIF");
+            
+            whiteKnightImage = Toolkit.getDefaultToolkit().getImage("./White_Knight.GIF");
+            blackKnightImage = Toolkit.getDefaultToolkit().getImage("./Black_Knight.GIF");
+            
+            whiteRookImage = Toolkit.getDefaultToolkit().getImage("./White_Rook.GIF");
+            blackRookImage = Toolkit.getDefaultToolkit().getImage("./Black_Rook.GIF");
+            
+            whitePawnImage = Toolkit.getDefaultToolkit().getImage("./White_Pawn.GIF");
+            blackPawnImage = Toolkit.getDefaultToolkit().getImage("./Black_Pawn.GIF");
 
             reset();
 

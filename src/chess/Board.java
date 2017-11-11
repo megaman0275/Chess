@@ -56,7 +56,8 @@ public class Board {
     static Piece bishop2B = new Bishop(5,0,false);
     
     private static Player winner = null;
-    private static Color boardColor = Color.white;
+    private static Color brown = new Color(169,146,103);
+    private static Color boardColor = brown;
 
     public static void Reset() {
 
@@ -110,7 +111,7 @@ public class Board {
         piecesInitalized = true;
     }
     
-    public static void Draw(Graphics2D g) {
+    public static void Draw(Graphics2D g,Chess main) {
 //Calculate the width and height of each board square.
         int ydelta = Window.getHeight2()/NUM_ROWS;
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
@@ -156,6 +157,25 @@ public class Board {
                 Window.getWidth2()/NUM_COLUMNS,
                 Window.getHeight2()/NUM_ROWS);
         }
+//        if(selectedPiece != null){
+//            g.setColor(Color.yellow);
+//            g.fillRect(Window.getX(0)+selectedPiece.xpos*Window.getWidth2()/NUM_COLUMNS,
+//            Window.getY(0)+selectedPiece.ypos*Window.getHeight2()/NUM_ROWS,
+//            Window.getWidth2()/NUM_COLUMNS,
+//            Window.getHeight2()/NUM_ROWS);
+//            for(Bucket possibleLoc : selectedPiece.getPossibleMovesArray()){
+//                g.setColor(Color.green);
+//                g.fillRect(Window.getX(0)+possibleLoc.xpos*Window.getWidth2()/NUM_COLUMNS,
+//                Window.getY(0)+possibleLoc.ypos*Window.getHeight2()/NUM_ROWS,
+//                Window.getWidth2()/NUM_COLUMNS,
+//                Window.getHeight2()/NUM_ROWS);
+//                
+//                g.setColor(Color.orange);
+//                g.drawRect(Window.getX(0)+possibleLoc.xpos*Window.getWidth2()/NUM_COLUMNS,
+//                Window.getY(0)+possibleLoc.ypos*Window.getHeight2()/NUM_ROWS,
+//                Window.getWidth2()/NUM_COLUMNS,
+//                Window.getHeight2()/NUM_ROWS); 
+//            }
 // Drawing all the Pieces        
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
         {
@@ -163,7 +183,7 @@ public class Board {
             {
                 if (board[zrow][zcolumn] != null)
 //                    if(!board[zrow][zcolumn].isCaptured())
-                board[zrow][zcolumn].Draw(g, zrow, zcolumn, xdelta, ydelta);
+                board[zrow][zcolumn].Draw(g, zrow, zcolumn, xdelta, ydelta, main);
             }
         }
             
@@ -267,7 +287,7 @@ public class Board {
     
     public static void ChangeBoardColor(){
             if(boardColor == Color.white)
-                boardColor = Color.black;
+                boardColor = brown;
                 else
                 boardColor = Color.white;
     }

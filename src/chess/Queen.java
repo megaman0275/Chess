@@ -23,16 +23,50 @@ public class Queen extends Piece {
         xpos = x;
         ypos = y;
     }
+////////////////////////////////////////////////////////////////////////////////
+//                             Draw Code                                      //
+////////////////////////////////////////////////////////////////////////////////    
     public void Draw(Graphics2D g,int row,int column,
-    int xdelta,int ydelta){
-        g.setColor(color); 
+    int xdelta,int ydelta,Chess main){
         
-       if (whiteTeam)
-            g.setColor(Color.blue);
+        if(player == Player.Player1)
+            drawWhiteQueenImage(g,Window.getX(xpos*xdelta)+15,
+            Window.getY(ypos*ydelta)+50,
+            0,1.1,1.1,main);
         else
-            g.setColor(Color.red);
-        g.setFont(new Font("Arial",Font.PLAIN,30));
-        g.drawString("Queen",Window.getX(xpos*xdelta)+15,
-        Window.getY(ypos*ydelta)+50);       
+            drawBlackQueenImage(g,Window.getX(xpos*xdelta)+15,
+            Window.getY(ypos*ydelta)+50,
+            0,1.1,1.1,main);
+    }
+    
+//====================  Draw White Piece  ====================================//
+    private void drawWhiteQueenImage(Graphics2D g,int xpos,int ypos,
+    double rot,double xscale,double yscale,Chess main)
+    {
+        g.translate(xpos,ypos);
+        g.scale( xscale , yscale );
+
+        int width = main.whiteQueenImage.getWidth(main);
+        int height = main.whiteQueenImage.getHeight(main);
+         
+        g.drawImage(main.whiteQueenImage,0,-height/2,width,height,main);        
+     
+        g.scale( 1.0/xscale,1.0/yscale );
+        g.translate(-xpos,-ypos);
+    }
+//====================  Draw Black Piece  ====================================//
+    private void drawBlackQueenImage(Graphics2D g,int xpos,int ypos,
+    double rot,double xscale,double yscale,Chess main)
+    {
+        g.translate(xpos,ypos);
+        g.scale( xscale , yscale );
+
+        int width = main.blackQueenImage.getWidth(main);
+        int height = main.blackQueenImage.getHeight(main);
+         
+        g.drawImage(main.blackQueenImage,0,-height/2,width,height,main);        
+     
+        g.scale( 1.0/xscale,1.0/yscale );
+        g.translate(-xpos,-ypos);
     }
 }
