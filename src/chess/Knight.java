@@ -1,4 +1,5 @@
 
+
 package chess;
 
 import java.awt.Color;
@@ -18,8 +19,90 @@ public class Knight extends Piece {
     }
     
     public void updatePossibleMoves(){
+         possibleMoves.clear();
+       
+       int testX = xpos + 2;
+        int testY = ypos - 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos + 2;
+        testY = ypos + 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos + 1;
+        testY = ypos - 2;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos + 1;
+        testY = ypos + 2;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));          
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 2;
+        testY = ypos + 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 2;
+        testY = ypos - 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 1;
+        testY = ypos + 2;
+        if(testY >= 0 & testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 1;
+        testY = ypos - 2;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));          
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
         
     }
+   
     public boolean checkIfGoodMove(int _xpos, int _ypos){
         for(Bucket move : possibleMoves){
             if(_xpos == move.xpos && _ypos == move.ypos)
