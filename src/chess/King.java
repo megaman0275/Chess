@@ -17,7 +17,15 @@ public class King extends Piece {
        
     }
     
-    public void hilightGoodSpots(){     
+    public void updatePossibleMoves(){
+        
+    }
+    public boolean checkIfGoodMove(int _xpos, int _ypos){
+        for(Bucket move : possibleMoves){
+            if(_xpos == move.xpos && _ypos == move.ypos)
+                return true;
+        }
+        return false;
     }
     public void move(int x, int y){
         xpos = x;

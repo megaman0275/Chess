@@ -118,6 +118,9 @@ public class Board {
         
         if(!piecesInitalized){
             initalizePieces();
+            for(Piece piece : Piece.getAllPiecesArray()){
+                piece.updatePossibleMoves();
+            }
         }
         
  //draw grid
@@ -140,11 +143,25 @@ public class Board {
 
 //Hilighting selected Piece
         if(selectedPiece != null){
-            g.setColor(Color.green);
-                g.fillRect(Window.getX(0)+selectedPiece.xpos*Window.getWidth2()/NUM_COLUMNS,
-                Window.getY(0)+selectedPiece.ypos*Window.getHeight2()/NUM_ROWS,
+            g.setColor(Color.yellow);
+            g.fillRect(Window.getX(0)+selectedPiece.xpos*Window.getWidth2()/NUM_COLUMNS,
+            Window.getY(0)+selectedPiece.ypos*Window.getHeight2()/NUM_ROWS,
+            Window.getWidth2()/NUM_COLUMNS,
+            Window.getHeight2()/NUM_ROWS);
+            
+            for(Bucket possibleMove : selectedPiece.getPossibleMovesArray()){
+                g.setColor(Color.green);
+                g.fillRect(Window.getX(0)+possibleMove.xpos*Window.getWidth2()/NUM_COLUMNS,
+                Window.getY(0)+possibleMove.ypos*Window.getHeight2()/NUM_ROWS,
                 Window.getWidth2()/NUM_COLUMNS,
                 Window.getHeight2()/NUM_ROWS);
+                g.setColor(Color.orange);
+                g.drawRect(Window.getX(0)+possibleMove.xpos*Window.getWidth2()/NUM_COLUMNS,
+                Window.getY(0)+possibleMove.ypos*Window.getHeight2()/NUM_ROWS,
+                Window.getWidth2()/NUM_COLUMNS,
+                Window.getHeight2()/NUM_ROWS);
+            }
+
         }
 //        if(selectedPiece != null){
 //            g.setColor(Color.yellow);
@@ -220,11 +237,11 @@ public class Board {
                         
                         selectedPiece = null;
                     }else if(selectedPiece.getColor() != board[zcol][zrow].getColor()){
-                        
+                        if(selectedPiece.checkIfGoodMove(zcol, zrow))
                         movePiece(zcol,zrow);
                     }
                 }else{
-                    
+                    if(selectedPiece.checkIfGoodMove(zcol, zrow))
                     movePiece(zcol,zrow);
                 }
             }
@@ -248,9 +265,10 @@ public class Board {
         }
        board[selectedPiece.getXPos()][selectedPiece.getYPos()] = null;
        selectedPiece.move(zcol, zrow);
-       board[selectedPiece.getXPos()][selectedPiece.getYPos()] = selectedPiece;
+       board[zcol][zrow] = selectedPiece;
        selectedPiece = null;
        whitePlayerTurn = !whitePlayerTurn;
+       Piece.UpdateAllPiecesPossibleMoves();
     }
     public static int convertXPixelToINT(int x, int xdelta){
         int intX = 0;

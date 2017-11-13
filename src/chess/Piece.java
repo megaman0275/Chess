@@ -3,8 +3,11 @@ package chess;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 abstract public class Piece {
+    protected ArrayList<Bucket> possibleMoves = new ArrayList<Bucket>();
+    protected static ArrayList<Piece> allPieces = new ArrayList<Piece>();
     public enum Player{
         Player1, Player2;
     }
@@ -13,6 +16,7 @@ abstract public class Piece {
     protected boolean captured;
     protected boolean whiteTeam;
     protected Color color;
+    protected boolean firstMove;
     Player player;
    
     Piece(){
@@ -26,6 +30,7 @@ abstract public class Piece {
         ypos = _ypos;
         captured = false;
         whiteTeam = _whiteTeam;
+        firstMove = true;
         if(whiteTeam){
             player = Player.Player1;
             color = Color.blue;
@@ -34,6 +39,7 @@ abstract public class Piece {
             player = Player.Player2;
             color = Color.red;
         }
+        allPieces.add(this);
     }
     
     public void setWhiteTeam(boolean _whiteTeam){
@@ -47,9 +53,16 @@ abstract public class Piece {
         Board.board[xpos][ypos] = null;
         System.out.println("Piece Captured");
     }
+    public static void UpdateAllPiecesPossibleMoves(){
+        for(Piece piece : allPieces)
+            piece.updatePossibleMoves();
+    }
     
     public boolean isCaptured(){
         return captured;
+    }
+    public Player getPlayer(){
+        return player;
     }
     public int getXPos(){
         return xpos;
@@ -57,8 +70,15 @@ abstract public class Piece {
     public int getYPos(){
         return ypos;
     }
+    public ArrayList<Bucket> getPossibleMovesArray(){
+        return possibleMoves;
+    }
+    public static ArrayList<Piece> getAllPiecesArray(){
+        return allPieces;
+    }
     
-    abstract protected void hilightGoodSpots();
+    abstract protected void updatePossibleMoves();
+    abstract protected boolean checkIfGoodMove(int _xpos, int _ypos);
     
     abstract protected void move(int x, int y);    
     
