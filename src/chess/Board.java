@@ -35,10 +35,10 @@ public class Board {
     static Piece pawn8B = new Pawn(7,1,false,true);
     
     static Piece kingW = new King(4,7,true);     
-    static Piece kingB = new King(3,0,false);
+    static Piece kingB = new King(4,0,false);
     
     static Piece queenW = new Queen(3,7,true);
-    static Piece queenB = new Queen(4,0,false);
+    static Piece queenB = new Queen(3,0,false);
     
     static Piece rook1W = new Rook(0,7,true);
     static Piece rook2W = new Rook(7,7,true);
@@ -269,6 +269,10 @@ public class Board {
        selectedPiece = null;
        whitePlayerTurn = !whitePlayerTurn;
        Piece.UpdateAllPiecesPossibleMoves();
+       if(whitePlayerTurn)
+           Piece.checkForWhiteKingCheck();
+       else
+           Piece.checkForBlackKingCheck();
     }
     public static int convertXPixelToINT(int x, int xdelta){
         int intX = 0;

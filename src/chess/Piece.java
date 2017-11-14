@@ -6,8 +6,10 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 abstract public class Piece {
-    protected ArrayList<Bucket> possibleMoves = new ArrayList<Bucket>();
     protected static ArrayList<Piece> allPieces = new ArrayList<Piece>();
+    protected static ArrayList<Piece> whitePieces = new ArrayList<Piece>();
+    protected  static ArrayList<Piece> blackPieces = new ArrayList<Piece>();
+    protected ArrayList<Bucket> possibleMoves = new ArrayList<Bucket>();
     public enum Player{
         Player1, Player2;
     }
@@ -34,14 +36,42 @@ abstract public class Piece {
         if(whiteTeam){
             player = Player.Player1;
             color = Color.blue;
+            whitePieces.add(this);
         }
         else {
             player = Player.Player2;
             color = Color.red;
+            blackPieces.add(this);
         }
         allPieces.add(this);
     }
     
+    public static void checkForWhiteKingCheck(){
+        boolean inCheck = false;
+        for(Piece piece : blackPieces){
+            for(Bucket loc : piece.getPossibleMovesArray()){
+                if(Board.kingW == Board.board[loc.xpos][loc.ypos]){
+                    System.out.println("==  White King in Check ==");
+                    inCheck = true;
+                }
+            }
+        }
+        if(!inCheck)
+            System.out.println("No Check");
+    }
+    public static void checkForBlackKingCheck(){
+        boolean inCheck = false;
+        for(Piece piece : whitePieces){
+            for(Bucket loc : piece.getPossibleMovesArray()){
+                if(Board.kingB == Board.board[loc.xpos][loc.ypos]){
+                    System.out.println("==  Black King in Check ==");
+                    inCheck = true;
+                }
+            }
+        }
+        if(!inCheck)
+            System.out.println("No Check");
+    }
     public void setWhiteTeam(boolean _whiteTeam){
         whiteTeam = _whiteTeam;
     }
@@ -51,7 +81,6 @@ abstract public class Piece {
     public void capturePiece(){
         captured = true;
         Board.board[xpos][ypos] = null;
-        System.out.println("Piece Captured");
     }
     public static void UpdateAllPiecesPossibleMoves(){
         for(Piece piece : allPieces)
