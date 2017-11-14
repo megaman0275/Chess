@@ -16,41 +16,86 @@ public class Rook  extends Piece{
        super(_xpos,_ypos,_whiteTeam);
        
     }
+    
     public void updatePossibleMoves(){
         possibleMoves.clear();
-        System.out.println("");
-        System.out.println("Updating Rooks Possible Positions");
         
+        //Testing Down Positions
         int testX = xpos;
-        int testY = ypos;
-        int i = 0;
-        boolean pieceInWayUp = false;
-        boolean pieceInWayDown = false;
-        while(i >= 0 && i < Board.NUM_ROWS){
-            testY = ypos - i;
-            if(testY >= 0){
-                System.out.println("Testing : board[" + testX + "][" + testY + "]");
-            if(Board.board[testX][testY] == null)
+        int testY = ypos - 1;
+        boolean pieceInWay = false;
+        
+        while(testY >=0 && !pieceInWay){
+            if(Board.board[testX][testY] == null){
                 possibleMoves.add(new Bucket(testX,testY));
-            else 
-                pieceInWayUp = true;
             }
-            
-            testY = ypos + i;
-            if(testY < Board.NUM_ROWS){
-                System.out.println("Testing : board[" + testX + "][" + testY + "]");
-            if(Board.board[testX][testY] == null)
+            else if(Board.board[testX][testY].getPlayer() != player){
                 possibleMoves.add(new Bucket(testX,testY));
-            else 
-                pieceInWayUp = true;
+                pieceInWay = true;
             }
-            i++;
-            
-            System.out.println(pieceInWayUp);
-            System.out.println(pieceInWayDown);
-            System.out.println("i = " + i);
-            System.out.println("");
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testY -= 1;
         }
+        
+        //Testing Down Positions
+        testX = xpos;
+        testY = ypos + 1;
+        pieceInWay = false;
+        
+        while(testY < Board.NUM_ROWS && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testY += 1;
+        }
+        
+        //Testing Right Positions
+        testX = xpos + 1;
+        testY = ypos;
+        pieceInWay = false;
+        
+        while(testX < Board.NUM_COLUMNS && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testX += 1;
+        }
+        
+        //Testing Left Positions
+        testX = xpos - 1;
+        testY = ypos;
+        pieceInWay = false;
+        
+        while(testX >= 0 && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testX -= 1;
+        }
+
     }
     public boolean checkIfGoodMove(int _xpos, int _ypos){
         for(Bucket move : possibleMoves){

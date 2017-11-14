@@ -37,15 +37,11 @@ public class Pawn extends Piece {
     
     public void updatePossibleMoves(){
         possibleMoves.clear();
-        System.out.println("");
-        System.out.println("Updating Possible Moves");
         
         if(player == Player.Player1)
             updateWhite();
         else
             updateBlack();
-        for(Bucket loc : possibleMoves)
-            System.out.println("board[" + loc.xpos + "][" + loc.ypos + "]");
     }
     private void updateWhite(){
         int testX = xpos;
