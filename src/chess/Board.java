@@ -206,12 +206,12 @@ public class Board {
         }
         else  {
             g.setColor(Player.getCurrentPlayer().getColor());
-            g.setFont(new Font("Arial",Font.PLAIN,30));
+            g.setFont(new Font("Times New Roman",Font.PLAIN,30));
             if(whitePlayerTurn)
-                g.drawString("Player 1's turn", 350,70);  
+                g.drawString("White Turn", 325,70);  
             
             else
-                g.drawString("Player 2's turn", 350,70);     
+                g.drawString("Black turn", 325,70);     
         }
         
         
