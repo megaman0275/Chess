@@ -150,11 +150,15 @@ public class Board {
             Window.getHeight2()/NUM_ROWS);
             
             for(Bucket possibleMove : selectedPiece.getPossibleMovesArray()){
-                g.setColor(Color.green);
+                if(board[possibleMove.xpos][possibleMove.ypos] == null)
+                    g.setColor(Color.green);
+                else 
+                    g.setColor(Color.red);
                 g.fillRect(Window.getX(0)+possibleMove.xpos*Window.getWidth2()/NUM_COLUMNS,
                 Window.getY(0)+possibleMove.ypos*Window.getHeight2()/NUM_ROWS,
                 Window.getWidth2()/NUM_COLUMNS,
                 Window.getHeight2()/NUM_ROWS);
+                
                 g.setColor(Color.orange);
                 g.drawRect(Window.getX(0)+possibleMove.xpos*Window.getWidth2()/NUM_COLUMNS,
                 Window.getY(0)+possibleMove.ypos*Window.getHeight2()/NUM_ROWS,
