@@ -15,9 +15,9 @@ public class Pawn extends Piece {
         super();
         royalPawn = false;
     }
-    Pawn(int _xpos, int _ypos, boolean _whiteTeam){
+    Pawn(int _xpos, int _ypos, boolean _whiteTeam, boolean _royalPawn){
        super(_xpos,_ypos,_whiteTeam);
-       royalPawn = false;
+       royalPawn = _royalPawn;
     }
 
 // Glitch: clibking right inbetween two squares    
@@ -39,9 +39,15 @@ public class Pawn extends Piece {
         possibleMoves.clear();
         
         if(player == Player.Player1)
-            updateWhite();
+            if (royalPawn)
+                updateWhiteCap();
+            else
+                updateWhite();
         else
-            updateBlack();
+            if (royalPawn)
+                updateBlackCap();
+            else
+                updateBlack();
     }
     private void updateWhite(){
         int testX = xpos;
@@ -94,6 +100,68 @@ public class Pawn extends Piece {
         if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
         if(Board.board[testX][testY] != null){
             if(Board.board[testX][testY].getPlayer() != player)
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+    }
+    private void updateWhiteCap(){
+        int testX = xpos;
+        int testY = ypos - 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 1;
+        testY = ypos - 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos + 1;
+        testY = ypos - 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+    }
+    private void updateBlackCap(){
+        int testX = xpos;
+        int testY = ypos + 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos - 1;
+        testY = ypos + 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        
+        testX = xpos + 1;
+        testY = ypos + 1;
+        if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
+        if(Board.board[testX][testY] == null){
+            possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if(Board.board[testX][testY].getPlayer() != player){
             possibleMoves.add(new Bucket(testX, testY));
         }
     }
