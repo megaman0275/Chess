@@ -1,4 +1,3 @@
-
 package chess;
 import java.awt.Color;
 import java.awt.Font;
@@ -37,7 +36,7 @@ public class Pawn extends Piece {
     
     public void updatePossibleMoves(){
         possibleMoves.clear();
-        
+       
         if(player == Player.Player1)
             if (royalPawn)
                 updateWhiteCap();
@@ -191,7 +190,11 @@ public class Pawn extends Piece {
         int width = main.whitePawnImage.getWidth(main);
         int height = main.whitePawnImage.getHeight(main);
          
-        g.drawImage(main.whitePawnImage,0,-height/2,width,height,main);        
+        g.drawImage(main.whitePawnImage,0,-height/2,width,height,main);       
+        if (royalPawn){
+            g.setColor(Color.BLACK);
+            g.drawLine(height-28, -width/2+10, height-28, width/2-10);
+        }
      
         g.scale( 1.0/xscale,1.0/yscale );
         g.translate(-xpos,-ypos);
@@ -207,7 +210,11 @@ public class Pawn extends Piece {
         int height = main.blackPawnImage.getHeight(main);
          
         g.drawImage(main.blackPawnImage,0,-height/2,width,height,main);        
-     
+        if (royalPawn){
+            g.setColor(Color.white);
+            g.drawLine(height-28, -width/2+10, height-28, width/2-10);
+        }
+        
         g.scale( 1.0/xscale,1.0/yscale );
         g.translate(-xpos,-ypos);
     }
