@@ -5,10 +5,7 @@
         <group>
             <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Board.java</file>
             <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Queen.java</file>
-            <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Rook.java</file>
-            <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Knight.java</file>
-            <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Pawn.java</file>
-            <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Piece.java</file>
+            <file>file:/Users/briansanchez/Desktop/Chess/src/chess/Bishop.java</file>
         </group>
     </open-files>
 </project-private>

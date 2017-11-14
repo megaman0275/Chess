@@ -20,7 +20,7 @@ public class Rook  extends Piece{
     public void updatePossibleMoves(){
         possibleMoves.clear();
         
-        //Testing Down Positions
+        //Testing Up Positions
         int testX = xpos;
         int testY = ypos - 1;
         boolean pieceInWay = false;

@@ -19,7 +19,7 @@ public class Queen extends Piece {
     public void updatePossibleMoves(){
         possibleMoves.clear();
         
-        //Testing Down Positions
+        //Testing Up Positions
         int testX = xpos;
         int testY = ypos - 1;
         boolean pieceInWay = false;
@@ -93,6 +93,86 @@ public class Queen extends Piece {
                 pieceInWay = true;
             }
             testX -= 1;
+        }
+        
+        //Testing UpRight Positions
+        testX = xpos + 1;
+        testY = ypos - 1;
+        pieceInWay = false;
+        
+        while(testX < Board.NUM_COLUMNS && testY >= 0 && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testX++;
+            testY--;
+        }
+        
+        //Testing UpLeft Positions
+        testX = xpos - 1;
+        testY = ypos - 1;
+        pieceInWay = false;
+        
+        while(testX >= 0 && testY >= 0 && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testY--;
+            testX--;
+        }
+        
+        //Testing DownRight Positions
+        testX = xpos + 1;
+        testY = ypos + 1;
+        pieceInWay = false;
+        
+        while(testX < Board.NUM_COLUMNS && testY < Board.NUM_ROWS && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testX++;
+            testY++;
+        }
+        
+        //Testing DownLeft Positions
+        testX = xpos - 1;
+        testY = ypos + 1;
+        pieceInWay = false;
+        
+        while(testX >=0 && testY < Board.NUM_ROWS && !pieceInWay){
+            if(Board.board[testX][testY] == null){
+                possibleMoves.add(new Bucket(testX,testY));
+            }
+            else if(Board.board[testX][testY].getPlayer() != player){
+                possibleMoves.add(new Bucket(testX,testY));
+                pieceInWay = true;
+            }
+            else if(Board.board[testX][testY].getPlayer() == player){
+                pieceInWay = true;
+            }
+            testX--;
+            testY++;
         }
     }
     public boolean checkIfGoodMove(int _xpos, int _ypos){
