@@ -16,23 +16,23 @@ public class Board {
     public static boolean whitePlayerTurn = true;
     public static boolean piecesInitalized = false;
 
-    static Piece pawn1W = new Pawn(0,6,true);
-    static Piece pawn2W = new Pawn(1,6,true);
-    static Piece pawn3W = new Pawn(2,6,true);
-    static Piece pawn4W = new Pawn(3,6,true);
-    static Piece pawn5W = new Pawn(4,6,true);
-    static Piece pawn6W = new Pawn(5,6,true);
-    static Piece pawn7W = new Pawn(6,6,true);
-    static Piece pawn8W = new Pawn(7,6,true);
+    static Piece pawn1W = new Pawn(0,6,true,true);
+    static Piece pawn2W = new Pawn(1,6,true,false);
+    static Piece pawn3W = new Pawn(2,6,true,false);
+    static Piece pawn4W = new Pawn(3,6,true,false);
+    static Piece pawn5W = new Pawn(4,6,true,false);
+    static Piece pawn6W = new Pawn(5,6,true,false);
+    static Piece pawn7W = new Pawn(6,6,true,false);
+    static Piece pawn8W = new Pawn(7,6,true,true);
     
-    static Piece pawn1B = new Pawn(0,1,false);
-    static Piece pawn2B = new Pawn(1,1,false);
-    static Piece pawn3B = new Pawn(2,1,false);
-    static Piece pawn4B = new Pawn(3,1,false);
-    static Piece pawn5B = new Pawn(4,1,false);
-    static Piece pawn6B = new Pawn(5,1,false);
-    static Piece pawn7B = new Pawn(6,1,false);
-    static Piece pawn8B = new Pawn(7,1,false);
+    static Piece pawn1B = new Pawn(0,1,false,true);
+    static Piece pawn2B = new Pawn(1,1,false,false);
+    static Piece pawn3B = new Pawn(2,1,false,false);
+    static Piece pawn4B = new Pawn(3,1,false,false);
+    static Piece pawn5B = new Pawn(4,1,false,false);
+    static Piece pawn6B = new Pawn(5,1,false,false);
+    static Piece pawn7B = new Pawn(6,1,false,false);
+    static Piece pawn8B = new Pawn(7,1,false,true);
     
     static Piece kingW = new King(4,7,true);     
     static Piece kingB = new King(3,0,false);
