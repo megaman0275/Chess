@@ -111,6 +111,7 @@ public class Bishop extends Piece {
     public void move(int x, int y){
         xpos = x;
         ypos = y;
+        numMoves++;
     }
 ////////////////////////////////////////////////////////////////////////////////
 //                             Draw Code                                      //

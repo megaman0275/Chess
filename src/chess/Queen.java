@@ -185,6 +185,7 @@ public class Queen extends Piece {
     public void move(int x, int y){
         xpos = x;
         ypos = y;
+        numMoves++;
     }
 ////////////////////////////////////////////////////////////////////////////////
 //                             Draw Code                                      //

@@ -20,8 +20,22 @@ public class King extends Piece {
     public void updatePossibleMoves(){
         possibleMoves.clear();
        
-       int testX = xpos + 1;
-        int testY = ypos +1;
+        int testX = xpos + 1;
+        int testY = ypos;
+        if(numMoves == 0){
+            if(Board.board[testX][testY] == null && Board.board[testX + 1][testY] == null){
+                possibleMoves.add(new Bucket(testX + 1,testY));
+                System.out.println("[" + testX + "][" + testY + "]");
+            }
+            testX = xpos - 1;
+            if(Board.board[testX][testY] == null && Board.board[testX - 1][testY] == null){
+                possibleMoves.add(new Bucket(testX - 1,testY));
+                System.out.println("[" + testX + "][" + testY + "]");
+            }
+        }
+            
+        testX = xpos + 1;
+        testY = ypos +1;
         if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
         if(Board.board[testX][testY] == null){
             possibleMoves.add(new Bucket(testX, testY));
@@ -110,6 +124,22 @@ public class King extends Piece {
     public void move(int x, int y){
         xpos = x;
         ypos = y;
+        if(numMoves == 0){
+            if(player == Player.Player1){
+                if(xpos == 6 && ypos == 7){
+                    Board.rook2W.move(5,7);
+                }else if(xpos == 2 && ypos == 7){
+                    Board.rook1W.move(3,7);
+                }
+            }else{
+                if(xpos == 6 && ypos == 0){
+                    Board.rook1B.move(5,0);
+                }else if(xpos == 2 && ypos == 0){
+                    Board.rook2B.move(3,0);
+                }
+            }
+        }
+        numMoves++;
     }
 ////////////////////////////////////////////////////////////////////////////////
 //                             Draw Code                                      //

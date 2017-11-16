@@ -23,8 +23,7 @@ public class Pawn extends Piece {
     public void move(int x, int y){
         xpos = x;
         ypos = y;
-        if(firstMove)
-            firstMove = false;
+        numMoves++;
     }
     public boolean checkIfGoodMove(int _xpos, int _ypos){
         for(Bucket move : possibleMoves){
@@ -54,7 +53,7 @@ public class Pawn extends Piece {
         if(testY >= 0 && testY < Board.NUM_ROWS)
         if(Board.board[testX][testY] == null){
             possibleMoves.add(new Bucket(testX, testY));
-            if(firstMove && Board.board[testX][testY-1] == null){
+            if(numMoves == 0 && Board.board[testX][testY-1] == null){
                 possibleMoves.add(new Bucket(testX, testY-1));
             }
         }
@@ -81,7 +80,7 @@ public class Pawn extends Piece {
         if(testY >= 0 && testY < Board.NUM_ROWS)
         if(Board.board[testX][testY] == null){
             possibleMoves.add(new Bucket(testX, testY));
-            if(firstMove && Board.board[testX][testY+1] == null){
+            if(numMoves == 0 && Board.board[testX][testY+1] == null){
                 possibleMoves.add(new Bucket(testX, testY+1));
             }
         }

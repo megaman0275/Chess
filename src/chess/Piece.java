@@ -18,7 +18,9 @@ abstract public class Piece {
     protected boolean captured;
     protected boolean whiteTeam;
     protected Color color;
-    protected boolean firstMove;
+    protected int numMoves;
+    private static boolean whiteKingInCheck;
+    private static boolean blackKingInCheck;
     Player player;
    
     Piece(){
@@ -32,7 +34,6 @@ abstract public class Piece {
         ypos = _ypos;
         captured = false;
         whiteTeam = _whiteTeam;
-        firstMove = true;
         if(whiteTeam){
             player = Player.Player1;
             color = Color.blue;
@@ -45,33 +46,44 @@ abstract public class Piece {
         }
         allPieces.add(this);
     }
-    
-    public static void checkForWhiteKingCheck(){
+    public static void setKingInCheckBoolean(Player _player){
+        if(_player == Player.Player1)
+            blackKingInCheck = Piece.checkForCheck(Board.kingB.getXPos(), Board.kingB.getYPos(), Board.kingB.getPlayer());
+        else 
+            whiteKingInCheck = Piece.checkForCheck(Board.kingW.getXPos(), Board.kingW.getYPos(), Board.kingW.getPlayer());
+        
+        if(whiteKingInCheck)
+            System.out.println("== White King In Check == ");
+        else if(blackKingInCheck)
+            System.out.println("== Black King In Check ==");
+        else 
+            System.out.println("No Check");
+    }
+    public static boolean checkForCheck(int x, int y, Player _player){
         boolean inCheck = false;
-        for(Piece piece : blackPieces){
-            for(Bucket loc : piece.getPossibleMovesArray()){
-                if(Board.kingW == Board.board[loc.xpos][loc.ypos]){
-                    System.out.println("==  White King in Check ==");
-                    inCheck = true;
+        if(_player == Player.Player1){
+            for(Piece piece : blackPieces){
+                for(Bucket loc : piece.getPossibleMovesArray()){
+                    if(Board.kingW == Board.board[loc.xpos][loc.ypos]){
+                        inCheck = true;
+                    }
+                }
+            }
+        }else{
+            for(Piece piece : whitePieces){
+                for(Bucket loc : piece.getPossibleMovesArray()){
+                    if(Board.kingB == Board.board[loc.xpos][loc.ypos]){
+                        inCheck = true;
+                    }
                 }
             }
         }
-        if(!inCheck)
-            System.out.println("No Check");
+        
+        return inCheck;
     }
-    public static void checkForBlackKingCheck(){
-        boolean inCheck = false;
-        for(Piece piece : whitePieces){
-            for(Bucket loc : piece.getPossibleMovesArray()){
-                if(Board.kingB == Board.board[loc.xpos][loc.ypos]){
-                    System.out.println("==  Black King in Check ==");
-                    inCheck = true;
-                }
-            }
-        }
-        if(!inCheck)
-            System.out.println("No Check");
-    }
+//    public boolean test(Piece piece){
+//        if(getKingInCheck(piece.player))
+//    }
     public void setWhiteTeam(boolean _whiteTeam){
         whiteTeam = _whiteTeam;
     }
@@ -104,6 +116,12 @@ abstract public class Piece {
     }
     public static ArrayList<Piece> getAllPiecesArray(){
         return allPieces;
+    }
+    public static boolean getKingInCheck(Player player){
+        if(player == Player.Player1)
+            return whiteKingInCheck;
+        else
+            return blackKingInCheck;
     }
     
     abstract protected void updatePossibleMoves();

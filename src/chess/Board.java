@@ -42,8 +42,9 @@ public class Board {
     
     static Piece rook1W = new Rook(0,7,true);
     static Piece rook2W = new Rook(7,7,true);
-    static Piece rook1B = new Rook(0,0,false);    
-    static Piece rook2B = new Rook(7,0,false);
+    static Piece rook1B = new Rook(7,0,false);
+    static Piece rook2B = new Rook(0,0,false);    
+    
     
     static Piece knight1W = new Knight(1,7,true);
     static Piece knight1B = new Knight(6,7,true);
@@ -267,16 +268,20 @@ public class Board {
         if(board[zcol][zrow] != null){
             board[zcol][zrow].capturePiece();
         }
-       board[selectedPiece.getXPos()][selectedPiece.getYPos()] = null;
-       selectedPiece.move(zcol, zrow);
-       board[zcol][zrow] = selectedPiece;
-       selectedPiece = null;
-       whitePlayerTurn = !whitePlayerTurn;
-       Piece.UpdateAllPiecesPossibleMoves();
-       if(whitePlayerTurn)
-           Piece.checkForWhiteKingCheck();
-       else
-           Piece.checkForBlackKingCheck();
+        
+        Piece king = null;
+        if(selectedPiece.getPlayer() == Piece.Player.Player1)
+            king = kingW;
+        else 
+            king = kingB;
+        
+        board[selectedPiece.getXPos()][selectedPiece.getYPos()] = null;
+        selectedPiece.move(zcol, zrow);
+        board[zcol][zrow] = selectedPiece;
+        selectedPiece = null;
+        whitePlayerTurn = !whitePlayerTurn;
+        Piece.UpdateAllPiecesPossibleMoves();
+        Piece.setKingInCheckBoolean(king.getPlayer());
     }
     public static int convertXPixelToINT(int x, int xdelta){
         int intX = 0;
