@@ -219,7 +219,14 @@ public class Board {
                 g.drawString("Black turn", 325,70);     
         }
         
-        
+        for (int i=0;i<NUM_COLUMNS;i++){
+            if (board[i][7] instanceof Pawn){
+                board[i][7] = new Queen(i,7,false);
+            }
+            else if (board[i][0] instanceof Pawn){
+                board[i][0] = new Queen(i,0,true);
+            }
+        }
         
     }
     
