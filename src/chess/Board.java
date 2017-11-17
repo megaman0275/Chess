@@ -60,7 +60,7 @@ public class Board {
     private static Color brown = new Color(169,146,103);
     private static Color boardColor = brown;
 
-    public static void Reset() {
+ public static void Reset() {
 
         for (int zi = 0;zi<NUM_ROWS;zi++)
         {
@@ -69,8 +69,59 @@ public class Board {
                 board[zi][zx] = null;
             }
         }
+     pawn1W = new Pawn(0,6,true,true);
+      pawn2W = new Pawn(1,6,true,false);
+      pawn3W = new Pawn(2,6,true,false);
+      pawn4W = new Pawn(3,6,true,false);
+      pawn5W = new Pawn(4,6,true,false);
+      pawn6W = new Pawn(5,6,true,false);
+      pawn7W = new Pawn(6,6,true,false);
+      pawn8W = new Pawn(7,6,true,true);
+    
+      pawn1B = new Pawn(0,1,false,true);
+      pawn2B = new Pawn(1,1,false,false);
+      pawn3B = new Pawn(2,1,false,false);
+      pawn4B = new Pawn(3,1,false,false);
+      pawn5B = new Pawn(4,1,false,false);
+      pawn6B = new Pawn(5,1,false,false);
+      pawn7B = new Pawn(6,1,false,false);
+      pawn8B = new Pawn(7,1,false,true);
+    
+      kingW = new King(4,7,true);     
+      kingB = new King(4,0,false);
+    
+      queenW = new Queen(3,7,true);
+      queenB = new Queen(3,0,false);
+    
+      rook1W = new Rook(0,7,true);
+      rook2W = new Rook(7,7,true);
+      rook1B = new Rook(7,0,false);
+      rook2B = new Rook(0,0,false);    
+    
+    
+      knight1W = new Knight(1,7,true);
+      knight1B = new Knight(6,7,true);
+      knight2W = new Knight(1,0,false);     
+      knight2B = new Knight(6,0,false);
+    
+      bishop1W = new Bishop(2,7,true);
+      bishop1B = new Bishop(5,7,true);
+      bishop2W = new Bishop(2,0,false);     
+      bishop2B = new Bishop(5,0,false);
+        //initalizePieces();
         winner = null;
-
+        selectedPiece = null;
+        whitePlayerTurn = true;
+        piecesInitalized = false;
+        
+        if(!piecesInitalized){
+            initalizePieces();
+            for(Piece piece : Piece.getAllPiecesArray()){
+                piece.updatePossibleMoves();
+            }
+        }
+        
+        
     }
     
     public static void initalizePieces(){
