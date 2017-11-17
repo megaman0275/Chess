@@ -127,15 +127,23 @@ public class King extends Piece {
         if(numMoves == 0){
             if(player == Player.Player1){
                 if(xpos == 6 && ypos == 7){
-                    Board.rook2W.move(5,7);
+                    Board.board[Board.rook2W.getXPos()][Board.rook2W.getYPos()] = null;
+                    Board.rook2W.move(5, 7);
+                    Board.board[5][7] = Board.rook2W;
                 }else if(xpos == 2 && ypos == 7){
-                    Board.rook1W.move(3,7);
+                    Board.board[Board.rook1W.getXPos()][Board.rook1W.getYPos()] = null;
+                    Board.rook1W.move(3, 7);
+                    Board.board[3][7] = Board.rook1W;
                 }
             }else{
                 if(xpos == 6 && ypos == 0){
-                    Board.rook1B.move(5,0);
+                    Board.board[Board.rook1B.getXPos()][Board.rook2W.getYPos()] = null;
+                    Board.rook1B.move(5, 0);
+                    Board.board[5][0] = Board.rook1B;
                 }else if(xpos == 2 && ypos == 0){
-                    Board.rook2B.move(3,0);
+                    Board.board[Board.rook2B.getXPos()][Board.rook2W.getYPos()] = null;
+                    Board.rook2B.move(3, 0);
+                    Board.board[3][0] = Board.rook2B;
                 }
             }
         }
