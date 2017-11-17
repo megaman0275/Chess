@@ -65,6 +65,12 @@ public class Pawn extends Piece {
             if(Board.board[testX][testY].getPlayer() != player)
             possibleMoves.add(new Bucket(testX, testY));
         }
+        else if (Board.board[testX][testY+=1] != null){
+            if(Board.board[testX][testY].getPlayer() != player && Board.board[testX][testY].numMoves == 1){
+            possibleMoves.add(new Bucket(testX, testY));
+            
+            }
+        }
         
         testX = xpos + 1;
         testY = ypos - 1;
@@ -72,6 +78,12 @@ public class Pawn extends Piece {
         if(Board.board[testX][testY] != null){
             if(Board.board[testX][testY].getPlayer() != player)
             possibleMoves.add(new Bucket(testX, testY));
+        }
+        else if (Board.board[testX][testY+=1] != null){
+            if(Board.board[testX][testY].getPlayer() != player && Board.board[testX][testY].numMoves == 1){
+            possibleMoves.add(new Bucket(testX, testY));
+            
+            }
         }
     }
     private void updateBlack(){
@@ -92,7 +104,13 @@ public class Pawn extends Piece {
             if(Board.board[testX][testY].getPlayer() != player)
             possibleMoves.add(new Bucket(testX, testY));
         }
-        
+        else if (Board.board[testX][testY-=1] != null){
+            if(Board.board[testX][testY].getPlayer() != player && Board.board[testX][testY].numMoves == 1){
+            possibleMoves.add(new Bucket(testX, testY));
+            
+            }
+        }
+            
         testX = xpos + 1;
         testY = ypos + 1;
         if(testY >= 0 && testY < Board.NUM_ROWS && testX >= 0 && testX < Board.NUM_COLUMNS)
@@ -100,6 +118,14 @@ public class Pawn extends Piece {
             if(Board.board[testX][testY].getPlayer() != player)
             possibleMoves.add(new Bucket(testX, testY));
         }
+        else if (Board.board[testX][testY-=1] != null){
+            if(Board.board[testX][testY].getPlayer() != player && Board.board[testX][testY].numMoves == 1){
+            possibleMoves.add(new Bucket(testX, testY));
+            
+            }
+        }
+        
+            
     }
     private void updateWhiteCap(){
         int testX = xpos;
