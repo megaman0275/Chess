@@ -1,11 +1,9 @@
 package chess;
 
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-
 
 
 public class Board {
@@ -370,4 +368,3 @@ public class Board {
                 boardColor = Color.white;
     }
 }
-
